@@ -1,4 +1,4 @@
-import { NotImplementedError } from '../extensions/index.js';
+const { NotImplementedError } = require('../extensions/index.js');
 
 /**
  * Given matrix where you have to find cats by ears "^^"
@@ -14,7 +14,8 @@ import { NotImplementedError } from '../extensions/index.js';
  * ]) => 3`
  *
  */
-export default function countCats(backyard) {
+
+function countCats(backyard) {
   let number = 0;
 
   for (let i = 0; i < backyard.length; i++) {
@@ -26,3 +27,7 @@ export default function countCats(backyard) {
 
   return number;
 }
+
+module.exports = {
+  countCats
+};
