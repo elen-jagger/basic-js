@@ -23,9 +23,94 @@ const { NotImplementedError } = require('../extensions/index.js');
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+ function minesweeper(matrix) {
+  let result = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    let row = [];
+    for (let j = 0; j < matrix[i].length; j++) {
+      row.push(0);
+    }
+    result.push(row);
+      console.log(result);
+  }
+    console.log(result);
+
+  for (let a = 0; a < matrix.length; a++) {
+    for (let b = 0; b < matrix[a].length; b++) {
+      if (matrix[a][b] === true) {
+
+        if (a === 0) {
+          if (b === 0) {
+            result[a][b + 1] += 1;
+            result[a + 1][b] += 1;
+            result[a + 1][b + 1] += 1;
+          }
+          else if (b === matrix[a].length - 1) {
+            result[a][b - 1] += 1;
+            result[a + 1][b - 1] += 1;
+            result[a + 1][b] += 1;
+          }
+          else {
+            result[a][b - 1] += 1;
+            result[a][b + 1] += 1;
+            result[a + 1][b - 1] += 1;
+            result[a + 1][b] += 1;
+            result[a + 1][b + 1] += 1;
+          }
+        }
+
+        else if (a === matrix.length - 1) {
+            if (b === 0) {
+            result[a][b + 1] += 1;
+            result[a - 1][b] += 1;
+            result[a - 1][b + 1] += 1;
+          }
+          else if (b === matrix[a].length - 1) {
+            result[a][b - 1] += 1;
+            result[a - 1][b - 1] += 1;
+            result[a - 1][b] += 1;
+          }
+          else {
+            result[a][b - 1] += 1;
+            result[a][b + 1] += 1;
+            result[a - 1][b - 1] += 1;
+            result[a - 1][b] += 1;
+            result[a - 1][b + 1] += 1;
+          }
+
+        }
+
+        else {
+             if (b === 0) {
+              result[a][b + 1] += 1;
+              result[a + 1][b] += 1;
+              result[a + 1][b + 1] += 1;
+              result[a - 1][b] += 1;
+              result[a - 1][b + 1] += 1;
+            }
+          else if (b === matrix[a].length - 1) {
+            result[a][b - 1] += 1;
+            result[a + 1][b - 1] += 1;
+            result[a + 1][b] += 1;
+            result[a - 1][b - 1] += 1;
+            result[a - 1][b] += 1;
+          }
+          else {
+            result[a][b - 1] += 1;
+            result[a][b + 1] += 1;
+            result[a + 1][b - 1] += 1;
+            result[a + 1][b] += 1;
+            result[a + 1][b + 1] += 1;
+            result[a - 1][b - 1] += 1;
+            result[a - 1][b] += 1;
+            result[a - 1][b + 1] += 1;
+          }
+        }
+      }
+    }
+  }
+  return result;
 }
 
 module.exports = {
